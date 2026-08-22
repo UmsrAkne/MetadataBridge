@@ -2,6 +2,8 @@
     x:Class="MetadataBridge.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:MetadataBridge.Behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:MetadataBridge.ViewModels"
@@ -10,5 +12,31 @@
     Height="480"
     d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
     mc:Ignorable="d">
-    <Grid />
+    <b:Interaction.Behaviors>
+        <behaviors:DropPngFilesToPathsBehavior />
+    </b:Interaction.Behaviors>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListBox
+            Grid.Row="1"
+            Grid.Column="0"
+            ItemsSource="{Binding ImageViewModels}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type viewModels:ImageViewModel}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding FileInfo.Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
 </Window>

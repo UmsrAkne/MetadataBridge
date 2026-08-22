@@ -1,4 +1,5 @@
-﻿using MetadataBridge.Utils;
+﻿using System.Collections.ObjectModel;
+using MetadataBridge.Utils;
 
 namespace MetadataBridge.ViewModels
 {
@@ -6,6 +7,7 @@ namespace MetadataBridge.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private string title = "MetadataBridge";
+        private ObservableCollection<ImageViewModel> imageViewModels = new ();
 
         public MainWindowViewModel()
         {
@@ -13,5 +15,11 @@ namespace MetadataBridge.ViewModels
         }
 
         public string Title { get => title; set => SetProperty(ref title, value); }
+
+        public ObservableCollection<ImageViewModel> ImageViewModels
+        {
+            get => imageViewModels;
+            set => SetProperty(ref imageViewModels, value);
+        }
     }
 }
