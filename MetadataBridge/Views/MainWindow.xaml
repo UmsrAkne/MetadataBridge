@@ -38,7 +38,11 @@
                         <ListBox
                             Margin="10,2,0,4"
                             BorderThickness="0"
-                            ItemsSource="{Binding JsonFiles}" />
+                            ItemsSource="{Binding JsonFiles}">
+                            <b:Interaction.Behaviors>
+                                <behaviors:DragFileInfoBehavior />
+                            </b:Interaction.Behaviors>
+                        </ListBox>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
