@@ -8,6 +8,7 @@ namespace MetadataBridge.ViewModels
     {
         private string title = "MetadataBridge";
         private ObservableCollection<ImageViewModel> imageViewModels = new ();
+        private ImageViewModel? selectedImage;
 
         public MainWindowViewModel()
         {
@@ -20,6 +21,12 @@ namespace MetadataBridge.ViewModels
         {
             get => imageViewModels;
             set => SetProperty(ref imageViewModels, value);
+        }
+
+        public ImageViewModel? SelectedImage
+        {
+            get => selectedImage;
+            set => SetProperty(ref selectedImage, value);
         }
     }
 }
