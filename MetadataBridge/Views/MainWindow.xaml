@@ -33,8 +33,12 @@
             SelectedItem="{Binding SelectedImage}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type viewModels:ImageViewModel}">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel>
                         <TextBlock Text="{Binding FileInfo.Name}" />
+                        <ListBox
+                            Margin="10,2,0,4"
+                            BorderThickness="0"
+                            ItemsSource="{Binding JsonFiles}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

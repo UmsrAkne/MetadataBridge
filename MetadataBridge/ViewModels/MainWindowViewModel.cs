@@ -16,6 +16,7 @@ namespace MetadataBridge.ViewModels
             AppLogger.Info("MainWindowViewModel created");
             #if DEBUG
             LoadDebugImages();
+            JsonExtractor.ExportWorkflow(ImageViewModels[0].FileInfo.FullName);
             #endif
         }
 
