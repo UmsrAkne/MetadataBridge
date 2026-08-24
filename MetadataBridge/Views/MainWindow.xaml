@@ -5,6 +5,7 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:behaviors="clr-namespace:MetadataBridge.Behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:io="clr-namespace:System.IO;assembly=System.Runtime"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:MetadataBridge.ViewModels"
     Title="{Binding Title}"
@@ -39,6 +40,13 @@
                             Margin="10,2,0,4"
                             BorderThickness="0"
                             ItemsSource="{Binding JsonFiles}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type io:FileInfo}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                             <b:Interaction.Behaviors>
                                 <behaviors:DragFileInfoBehavior />
                             </b:Interaction.Behaviors>
